@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ovi.a16flawbd.Fragments.ChatFragment;
+import com.ovi.a16flawbd.Fragments.ProfileFragment;
 import com.ovi.a16flawbd.Fragments.UsersFragment;
 import com.ovi.a16flawbd.ModelClasses.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,8 +86,10 @@ public class MainActivity extends AppCompatActivity {
                 Make sure to use
                 android.support.v4.app.Fragment
          */
+
+        viewPagerAdapter.addFragments(new UsersFragment(), "Lawyer");
         viewPagerAdapter.addFragments(new ChatFragment(), "Chats");
-        viewPagerAdapter.addFragments(new UsersFragment(), "Users");
+        viewPagerAdapter.addFragments(new ProfileFragment(), "Profile");
 
 
         viewPager.setAdapter(viewPagerAdapter);
