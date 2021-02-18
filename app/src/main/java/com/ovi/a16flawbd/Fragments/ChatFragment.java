@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ovi.a16flawbd.Adapters.UsersAdapter;
 import com.ovi.a16flawbd.ModelClasses.ChatList;
 import com.ovi.a16flawbd.ModelClasses.UserModel;
+
 import com.ovi.a16flawbd.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -81,8 +83,14 @@ public class ChatFragment extends Fragment {
             }
         });
 
+
+
        return view;
     }
+
+    // add tokens to chat fragments
+
+
 
     private void myChatList() {
 

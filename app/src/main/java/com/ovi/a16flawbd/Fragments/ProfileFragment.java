@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 username.setText(userModel.getUsername());
                 if (userModel.getImageURL().equals("default")) {
-                    Picasso.get().load(R.mipmap.ic_launcher).into(profileImage);
+                    profileImage.setImageResource(R.mipmap.ic_launcher_round);
                 }
                 else {
                     Picasso.get().load(userModel.getImageURL()).into(profileImage);

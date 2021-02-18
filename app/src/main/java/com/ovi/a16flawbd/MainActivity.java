@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 final UserModel userModel = dataSnapshot.getValue(UserModel.class);
                 textViewUserName.setText(userModel.getUsername());
                 if (userModel.getImageURL().equals("default")) {
-                    Picasso.get().load(R.mipmap.ic_launcher).into(circleImageView);
+                    circleImageView.setImageResource(R.mipmap.ic_launcher_round);
                 }
                 else {
                         Picasso.get().load(userModel.getImageURL()).into(circleImageView);

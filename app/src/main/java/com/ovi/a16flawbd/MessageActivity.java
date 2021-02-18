@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.Query;
 import com.ovi.a16flawbd.Adapters.MessagesAdapter;
 import com.ovi.a16flawbd.ModelClasses.MessageModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ovi.a16flawbd.ModelClasses.UserModel;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -32,6 +37,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -40,6 +48,7 @@ public class MessageActivity extends AppCompatActivity {
     CircleImageView toolbarProfileImage;
     TextView toolbarUserName;
     DatabaseReference databaseReference,dbrefChatList,dbUserStatus;
+    FirebaseUser firebaseUser;
 
     ImageButton btnSend, btnSmiley;
     EditText editTextMessage;
@@ -47,8 +56,13 @@ public class MessageActivity extends AppCompatActivity {
     MessagesAdapter messagesAdapter;
     List<MessageModel> messageModelList;
     RecyclerView recyclerView;
+    Intent intent;
 
     ValueEventListener  seenListener;
+
+
+    String userid;
+    public boolean notify = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +73,8 @@ public class MessageActivity extends AppCompatActivity {
         receiverImageURL = getIntent().getStringExtra("imageURL");
         receiveruserID = getIntent().getStringExtra("userId");
         receiveruserName = getIntent().getStringExtra("userName");
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         // To set the back button in the toolbar
         toolbar = findViewById(R.id.messageActivityToolbar);
@@ -73,6 +89,8 @@ public class MessageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         // To set the toolbar information
         toolbarProfileImage = findViewById(R.id.profileImage);
@@ -92,14 +110,18 @@ public class MessageActivity extends AppCompatActivity {
         //    });
         }
 
+
+
         // Click events of Bottom Messaging system
         btnSend = findViewById(R.id.imageButtonSend);
         btnSmiley = findViewById(R.id.imageButtonSmiley);
         editTextMessage = findViewById(R.id.editTextMessage);
         btnSend.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 sendMessage();
+                notify = true;
             }
         });
         btnSmiley.setOnClickListener(new View.OnClickListener() {
@@ -184,10 +206,13 @@ public class MessageActivity extends AppCompatActivity {
                 }
             });
 
-
-
         }// end of if
+
+
+
     }// end of sendMessage
+
+
 
     private void openSmileyMenu() {
     }
