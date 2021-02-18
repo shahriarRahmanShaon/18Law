@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1068236470536",
+    "firebase_url": "https://lawx-65513-default-rtdb.firebaseio.com",
+    "project_id": "lawx-65513",
+    "storage_bucket": "lawx-65513.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068236470536:android:75b5bfd9e125a9778fd4bd",
+        "android_client_info": {
+          "package_name": "com.ovi.a16flawbd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtLruA8RWHHW6-5ONmZf7b1LD6AxlYsKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068236470536:android:034bcebde540b3998fd4bd",
+        "android_client_info": {
+          "package_name": "com.ovi.kausarlaw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtLruA8RWHHW6-5ONmZf7b1LD6AxlYsKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068236470536:android:70a7ebb057e2152c8fd4bd",
+        "android_client_info": {
+          "package_name": "com.x.lawofbd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtLruA8RWHHW6-5ONmZf7b1LD6AxlYsKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068236470536-omr3gft4d854bnpal00gg6muifa1lk80.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
