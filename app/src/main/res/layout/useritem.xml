@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal"
+<LinearLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:padding="10dp"
@@ -7,31 +7,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/recyProImage"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/userStatus"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="-15dp"
-        android:src="@color/statusOnline"
-        android:layout_marginTop="35dp"
-        />
-
-    <TextView
-        android:id="@+id/recyProName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="username"
-        android:textSize="18dp"
-        android:layout_marginLeft="20dp"
-        android:layout_gravity="center"
-        />
+
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/recyProImage"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userStatus"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="-15dp"
+            android:src="@color/statusOnline"
+            android:layout_marginTop="35dp"
+            />
+
+        <TextView
+            android:id="@+id/recyProName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textSize="18dp"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/lst_msg"
+        android:layout_marginLeft="49dp"
+        android:layout_gravity="center"/>
+
 
 
 </LinearLayout>
