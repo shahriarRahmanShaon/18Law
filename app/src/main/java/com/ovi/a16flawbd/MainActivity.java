@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ovi.a16flawbd.Fragments.ChatFragment;
+import com.ovi.a16flawbd.Fragments.LawListFragment;
 import com.ovi.a16flawbd.Fragments.ProfileFragment;
 import com.ovi.a16flawbd.Fragments.UsersFragment;
 import com.ovi.a16flawbd.ModelClasses.UserModel;
@@ -87,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 android.support.v4.app.Fragment
          */
 
+        viewPagerAdapter.addFragments(new LawListFragment(), "Law's");
         viewPagerAdapter.addFragments(new UsersFragment(), "Lawyer");
         viewPagerAdapter.addFragments(new ChatFragment(), "Chats");
         viewPagerAdapter.addFragments(new ProfileFragment(), "Profile");
