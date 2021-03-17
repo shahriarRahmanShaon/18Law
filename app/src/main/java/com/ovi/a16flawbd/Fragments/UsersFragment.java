@@ -97,13 +97,21 @@ public class UsersFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    if (!userModelList.isEmpty()){
+/*
+if (!userModelList.isEmpty()){
                         userModelList.clear();
                     }
+
+
+ */
                   for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                       UserModel userModel = dataSnapshot1.getValue(UserModel.class);
-                      userModelList.add(userModel);
+                      if (userModel.getCode().equals("123")){
+                          userModelList.add(userModel);
+                      }
+
                   }
+
                   usersAdapter = new UsersAdapter(userModelList,true);
                   recyclerViewUsers.setAdapter(usersAdapter);
                 }

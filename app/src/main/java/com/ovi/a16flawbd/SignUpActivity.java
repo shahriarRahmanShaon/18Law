@@ -26,9 +26,9 @@ import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    MaterialEditText materialEditTextUsername, materialEditTextPassword, materialEditTextEmail;
+    MaterialEditText materialEditTextUsername, materialEditTextPassword, materialEditTextEmail, materialEditTextCode;
     MaterialButton register;
-    String username, email, password;
+    String username, email, password, code;
     private ProgressDialog progressDialog;
 
     FirebaseAuth firebaseAuth;
@@ -48,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         materialEditTextUsername = (MaterialEditText) findViewById(R.id.matTextUsername);
         materialEditTextPassword = (MaterialEditText) findViewById(R.id.matTextPassword);
         materialEditTextEmail = (MaterialEditText) findViewById(R.id.matTextEmail);
+        materialEditTextCode = (MaterialEditText) findViewById(R.id.matCode);
         register = (MaterialButton) findViewById(R.id.btnRegister);
 
         progressDialog = new ProgressDialog(SignUpActivity.this);
@@ -74,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
         email = materialEditTextEmail.getText().toString().trim();
         username = materialEditTextUsername.getText().toString().trim();
         password = materialEditTextPassword.getText().toString().trim();
+        code = materialEditTextCode.getText().toString().trim();
 
         if (validateData()) {
 
@@ -94,6 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 hashMap.put("username", username);
                                 hashMap.put("imageURL", "default");
                                 hashMap.put("status","offline");
+                                hashMap.put("code", code);
 
                                 databaseReference.child(userId).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

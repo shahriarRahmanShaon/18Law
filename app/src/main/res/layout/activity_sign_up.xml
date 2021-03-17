@@ -26,9 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:met_floatingLabel="normal"
-        android:layout_marginHorizontal="16dp"
         android:hint="Username"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:padding="16dp"
         />
 
@@ -49,6 +48,16 @@
         android:layout_height="wrap_content"
         app:met_floatingLabel="normal"
         android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/matCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:met_floatingLabel="normal"
+        android:hint="You are a lawyer? put the code"
         android:inputType="textPassword"
         android:padding="16dp"
         />

@@ -2,7 +2,7 @@ package com.ovi.a16flawbd.ModelClasses;
 
 public class UserModel {
 
-    private  String id,username,imageURL,status;
+    private  String id,username,imageURL,status, code;
 
     public String getId() {
         return id;
@@ -11,6 +11,16 @@ public class UserModel {
     public void setId(String id) {
         this.id = id;
     }
+    //
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    //
 
     public String getUsername() {
         return username;
