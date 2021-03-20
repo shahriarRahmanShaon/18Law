@@ -12,16 +12,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ovi.a16flawbd.LawList.trafficActivity;
+import com.ovi.a16flawbd.LawList.showingLawDetails;
 import com.ovi.a16flawbd.R;
 
 
 public class LawListFragment extends Fragment {
 
     ListView listView;
-    final String[] items = new String[] { "Android", "iPhone", "WindowsMobile",
-            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2" };
+    final String[] items = new String[] { "Fundamental rights in Bangladesh", "Case law", "Codification and language",
+            "Freedom of information", "Criminal law", "Company law", "Contact law", "Religious law",
+            "Tax law", "Labour law", "Property law", "Intellectual property law", "Judiciary", "Judicial review", "Alternative dispute revolution", "Legal profession" };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,9 +35,9 @@ public class LawListFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (l==0){
-                    startActivity(new Intent(getActivity(), trafficActivity.class));
-                }
+
+                    startActivity(new Intent(getActivity(), showingLawDetails.class));
+
             }
         });
         return view;
