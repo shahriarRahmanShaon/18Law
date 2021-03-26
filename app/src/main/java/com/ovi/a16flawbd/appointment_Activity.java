@@ -23,9 +23,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ovi.a16flawbd.ModelClasses.Appointment_info;
 import com.ovi.a16flawbd.ModelClasses.UserModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class appointment_Activity extends AppCompatActivity {
@@ -33,25 +35,28 @@ public class appointment_Activity extends AppCompatActivity {
     String receiveruserID, sendSenderName, senderuserID;
     List<UserModel> userModelList;
     TextView name;
-    Button button;
-    FirebaseUser firebaseUser;
+    Button button, cancel;
+
+    DatabaseReference databaseReference;
+    Appointment_info appointment_info;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_);
-        receiveruserID = getIntent().getStringExtra("userId");
 
+
+        receiveruserID = getIntent().getStringExtra("lawyerName"); // lawyer id
+        senderuserID = FirebaseAuth.getInstance().getCurrentUser().getUid(); // simple user id
 
         name = findViewById(R.id.name);
+        name.setText(receiveruserID);
 
-
+        cancel = findViewById(R.id.cancel);
         button = findViewById(R.id.button);
-        senderuserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        name.setText(senderuserID);
-
         userModelList = new ArrayList<>();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("BaatCheet/Users/");
+        //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("BaatCheet/Users/");
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -64,14 +69,30 @@ public class appointment_Activity extends AppCompatActivity {
         params.y = -20;
         getWindow().setAttributes(params);
 
-      button.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              finish();
-          }
-      });
+
+
+      //send appointment info to firebase
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("BaatCheet/");
+        appointment_info = new Appointment_info();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put("got_appointment", "No");
+                hashMap.put("which_lawyer", receiveruserID);
+
+                databaseReference.child("appointment").child(senderuserID).setValue(hashMap);
+                finish();
+            }
+        });
+
 
     }
+
 
 
 

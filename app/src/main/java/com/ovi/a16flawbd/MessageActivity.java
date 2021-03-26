@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.Query;
 import com.ovi.a16flawbd.Adapters.MessagesAdapter;
+import com.ovi.a16flawbd.ModelClasses.Appointment_info;
 import com.ovi.a16flawbd.ModelClasses.MessageModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,7 +44,7 @@ import retrofit2.Response;
 
 public class MessageActivity extends AppCompatActivity {
 
-    String receiverImageURL, receiveruserName, receiveruserID, senderuserID, sendSenderName;
+    String receiverImageURL, receiveruserName, receiveruserID, senderuserID, sendLawyerName;
     Toolbar toolbar;
     CircleImageView toolbarProfileImage;
     TextView toolbarUserName;
@@ -73,7 +74,7 @@ public class MessageActivity extends AppCompatActivity {
         receiverImageURL = getIntent().getStringExtra("imageURL");
         receiveruserID = getIntent().getStringExtra("userId");
         receiveruserName = getIntent().getStringExtra("userName");
-       // sendSenderName = getIntent().putExtra("senderName", senderuserID);
+
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -115,6 +116,9 @@ public class MessageActivity extends AppCompatActivity {
         }
 
 
+
+
+
 // Firebase Initialization
         senderuserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -126,8 +130,39 @@ public class MessageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MessageActivity.this, appointment_Activity.class);
-                startActivity(intent);
+
+
+                // get appointment data from firebase
+
+                List<Appointment_info> apointmentData;
+                apointmentData = new ArrayList<>();
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("BaatCheet/appointment/");
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot1:snapshot.getChildren()){
+                            Appointment_info appointment_info = dataSnapshot1.getValue(Appointment_info.class);
+                            //apointmentData.add(appointment_info);
+                            if (appointment_info.getGot_appointment().equals("Yes") && receiveruserID.equals(appointment_info.getWhich_lawyer())){
+                                sendMessage();
+                                //
+                                System.out.println(appointment_info.getGot_appointment());
+                            }else
+                            {
+                                Intent intent = new Intent(MessageActivity.this, appointment_Activity.class);
+                                intent.putExtra("lawyerName", receiveruserID);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
                // sendMessage();
                 notify = true;
             }
