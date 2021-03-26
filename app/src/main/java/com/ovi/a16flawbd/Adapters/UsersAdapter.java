@@ -23,6 +23,8 @@ import com.ovi.a16flawbd.ModelClasses.ChatList;
 import com.ovi.a16flawbd.ModelClasses.MessageModel;
 import com.ovi.a16flawbd.ModelClasses.UserModel;
 import com.ovi.a16flawbd.R;
+import com.ovi.a16flawbd.SignUpActivity;
+import com.ovi.a16flawbd.appointment_Activity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -93,7 +95,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UsersAdapter
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(holder.itemView.getContext(),MessageActivity.class);
+                Intent intent = new Intent(holder.itemView.getContext(), MessageActivity.class);
                 intent.putExtra("userId",userModelList.get(i).getId());
                 intent.putExtra("imageURL",userModelList.get(i).getImageURL());
                 intent.putExtra("userName",userModelList.get(i).getUsername());

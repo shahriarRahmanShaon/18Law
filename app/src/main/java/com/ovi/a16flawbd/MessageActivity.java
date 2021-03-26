@@ -43,7 +43,7 @@ import retrofit2.Response;
 
 public class MessageActivity extends AppCompatActivity {
 
-    String receiverImageURL, receiveruserName, receiveruserID, senderuserID;
+    String receiverImageURL, receiveruserName, receiveruserID, senderuserID, sendSenderName;
     Toolbar toolbar;
     CircleImageView toolbarProfileImage;
     TextView toolbarUserName;
@@ -73,6 +73,8 @@ public class MessageActivity extends AppCompatActivity {
         receiverImageURL = getIntent().getStringExtra("imageURL");
         receiveruserID = getIntent().getStringExtra("userId");
         receiveruserName = getIntent().getStringExtra("userName");
+       // sendSenderName = getIntent().putExtra("senderName", senderuserID);
+
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -89,6 +91,8 @@ public class MessageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //pop up management
 
 
 
@@ -111,6 +115,8 @@ public class MessageActivity extends AppCompatActivity {
         }
 
 
+// Firebase Initialization
+        senderuserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         // Click events of Bottom Messaging system
         btnSend = findViewById(R.id.imageButtonSend);
@@ -120,7 +126,9 @@ public class MessageActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                sendMessage();
+                Intent intent = new Intent(MessageActivity.this, appointment_Activity.class);
+                startActivity(intent);
+               // sendMessage();
                 notify = true;
             }
         });
@@ -131,8 +139,8 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        // Firebase Initialization
-        senderuserID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
         dbUserStatus = FirebaseDatabase.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference("BaatCheet/Chats/");
         //databaseReference.keepSynced(true);
